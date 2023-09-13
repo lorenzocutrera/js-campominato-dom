@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+.container{
+    width: 1000px;
+    margin: 100px auto;   
+}
+
+button{
+    padding: 20px;
+    background-color: blue;
+    color: white;
+    border-radius: 20px;
+}
+
+.griglia{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bg-green{
+    background-color: greenyellow;
+}
+.bg-red{
+    background-color: red;
+}
+
+.cella{
+    width: calc(100% / 10);
+    aspect-ratio: 1 / 1;
+    border: solid 1px white;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}

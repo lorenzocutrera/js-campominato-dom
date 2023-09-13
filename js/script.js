@@ -16,3 +16,53 @@ pensiamo a queli strumenti ci servono, ad esempio: Di cosa ho bisogno per genera
 Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
 Eventuali validazioni e i controlli possiamo farli anche in un secondo momento.
 */
+
+
+document.querySelector('.inizia').addEventListener('click', function () {
+    let gameGrid = document.getElementById('gameGrid'); // seleziono la  grid
+    gameGrid.innerHTML = ""; // svuoto il container
+    let bombs = generaBombe();
+    console.log(bombs);
+    // scrivere per 100 volte un div.cella dentro al gameGrid
+    for (let i = 0; i < 100; i++) {
+
+
+        let cell = document.createElement('div'); // creo un div
+        cell.className = 'cella'; // assegno a questo di la classe
+        cell.innerText = i + 1;
+        
+        gameGrid.append(cell); // appendo al grid il div appena creato
+
+        cell.addEventListener('click', function () {
+            let trovata = false;
+            for (let j = 0; j < 16; j++){
+                console.log(bombs[j]);
+               if(this.innerText == bombs[j]){
+                trovata = true;
+               } else {
+                trovata = false;
+               }
+            }
+            if(trovata){
+                this.classList.toggle('bg-red');
+               } else {
+                this.classList.toggle('bg-green');
+               }
+            //console.log('ho cliccato sull elemento dom:', cellElement);
+            console.log(this); // Dom element cellElement
+            
+            console.log(this.innerText);
+        })
+
+    }
+});
+
+function generaBombe(){
+    let bombs = [];
+    for (let i = 0; i < 16; i++) {
+        let bomba = Math.random() *100;
+        bombs[i] = parseInt(bomba);
+        
+    }
+    return bombs;
+}
